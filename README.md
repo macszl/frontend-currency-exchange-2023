@@ -15,7 +15,7 @@ If you have an idea for other features, feel free to introduce them.
 
 ## REQUIREMENTS
 1. React/Preact ( you can use CRA / VITE if you want to )
-2. Data delivery - REST API => [https://openweathermap.org/api](http://api.nbp.pl/)
+2. Data delivery - REST API => [http://api.nbp.pl/](http://api.nbp.pl/)
 
 ## REGISTRATION
 1. Share your source code using Github https://github.com/goodylabs/frontend-currency-exchange-2023 :
