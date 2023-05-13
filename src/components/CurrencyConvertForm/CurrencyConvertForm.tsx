@@ -1,5 +1,4 @@
-import { Autocomplete, Button, Grid, InputLabel, MenuItem, TextField, Typography } from '@mui/material';
-import Select from '@mui/material/Select';
+import { Autocomplete, Button, Grid, TextField, Typography } from '@mui/material';
 import axios from 'axios';
 import { useFormik } from 'formik';
 import { useState } from 'react';
@@ -28,7 +27,7 @@ export function CurrencyConvertForm() {
   const validate = (values: { amount: string }) => {
     const errors: CurrencyConverterFormErrors = {};
 
-    if (!values.amount || isNaN(parseFloat(values.amount))) {
+    if (!values.amount || isNaN(parseFloat(values.amount)) || parseFloat(values.amount) <= 0) {
       errors.amount = 'Please enter a valid number';
     }
 

@@ -1,7 +1,7 @@
 {
   "parser": "@typescript-eslint/parser",
   "settings": {
-    "import/ignore": ["react-native"]
+    "import/ignore": ["react"]
   },
   "parserOptions": {
     "project": "./tsconfig.json",
@@ -13,14 +13,7 @@
     "browser": true,
     "es6": true
   },
-  "plugins": [
-    "@typescript-eslint",
-    "prettier",
-    "import",
-    "react",
-    "react-hooks",
-    "react-native"
-  ],
+  "plugins": ["@typescript-eslint", "prettier", "import", "react", "react-hooks"],
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
@@ -99,7 +92,6 @@
     "no-empty-function": "error",
     "no-eq-null": "error",
     "no-eval": "error",
-    "no-extend-native": "error",
     "no-extra-bind": "error",
     "no-extra-boolean-cast": "error",
     "no-labels": "error",

@@ -1,10 +1,8 @@
 import { Grid } from '@mui/material';
-import { useState } from 'react';
 import { CurrencyConvertForm } from '../components/CurrencyConvertForm/CurrencyConvertForm';
 import { Header } from '../components/Header/Header';
 
 export function CurrencyConverterPage() {
-
   return (
     <Grid
       container
