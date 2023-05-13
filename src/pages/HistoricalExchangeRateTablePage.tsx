@@ -1,7 +1,7 @@
 import { Grid } from '@mui/material';
 import { Header } from '../components/Header/Header';
 
-export function MainPage() {
+export function HistoricalExchangeRateTablePage() {
   return (
     <Grid
       container
@@ -15,9 +15,7 @@ export function MainPage() {
         md={12}
         lg={12}
         xl={12}
-      >
-        <Header></Header>
-      </Grid>
+      ><Header/></Grid>
     </Grid>
   );
 }

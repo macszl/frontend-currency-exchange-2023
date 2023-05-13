@@ -1,7 +1,7 @@
 import { Grid } from '@mui/material';
 import { Header } from '../components/Header/Header';
 
-export function MainPage() {
+export function CurrencyConverterPage() {
   return (
     <Grid
       container
@@ -9,7 +9,6 @@ export function MainPage() {
       height={'100vh'}
     >
       <Grid
-        item
         xs={12}
         sm={12}
         md={12}

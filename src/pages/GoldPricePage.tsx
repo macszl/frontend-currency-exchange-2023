@@ -1,7 +1,7 @@
 import { Grid } from '@mui/material';
 import { Header } from '../components/Header/Header';
 
-export function MainPage() {
+export function GoldPricePage() {
   return (
     <Grid
       container
@@ -16,7 +16,7 @@ export function MainPage() {
         lg={12}
         xl={12}
       >
-        <Header></Header>
+        <Header />
       </Grid>
     </Grid>
   );
