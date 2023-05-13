@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { HistoricalExchangeRateTablePage } from './pages/HistoricalExchangeRateTablePage';
 import { CurrencyConverterPage } from './pages/CurrencyConverter';
@@ -7,7 +6,6 @@ import { GoldPricePage } from './pages/GoldPricePage';
 import { MainPage } from './pages/MainPage';
 
 export function App() {
-  const [count, setCount] = useState(0);
 
   return (
     <Routes>

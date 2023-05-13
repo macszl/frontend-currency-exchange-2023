@@ -1,4 +1,5 @@
 import { Grid } from '@mui/material';
+import { GoldPriceChart } from '../components/GoldPriceChart/GoldPriceChart';
 import { Header } from '../components/Header/Header';
 
 export function GoldPricePage() {
@@ -17,6 +18,7 @@ export function GoldPricePage() {
         xl={12}
       >
         <Header />
+        <GoldPriceChart />
       </Grid>
     </Grid>
   );

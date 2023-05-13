@@ -44,7 +44,6 @@ export function ExchangeRateTable() {
             date: response.data[0].effectiveDate,
           } as CurrencyTableValues;
         });
-        console.log('tableValues is:' + tableValues);
         setTableValues(tableValues);
       } catch (error) {
         if (axios.isCancel(error)) {
