@@ -1,4 +1,4 @@
-import { Button, Grid, InputLabel, MenuItem, TextField, Typography } from '@mui/material';
+import { Autocomplete, Button, Grid, InputLabel, MenuItem, TextField, Typography } from '@mui/material';
 import Select from '@mui/material/Select';
 import axios from 'axios';
 import { useFormik } from 'formik';
@@ -8,7 +8,7 @@ import { CurrencyConverterFormErrors } from './CurrencyConverterForm.types';
 //todo
 //remove this after backend sync gets done
 
-const availableCurrencies = ['USD', 'JPY', 'GBP', 'EUR', 'INR', 'AUD'];
+const availableCurrencies = ['USD', 'JPY', 'GBP', 'EUR', 'AUD'];
 
 export function CurrencyConvertForm() {
   const [conversionResult, setConversionResult] = useState('');
@@ -59,46 +59,46 @@ export function CurrencyConvertForm() {
           onChange={formik.handleChange}
           error={formik.touched.amount && Boolean(formik.errors.amount)}
         />
-        <InputLabel id='from-currency-label'>From:</InputLabel>
-        <Select
+        <Autocomplete
           id='from-currency-select'
-          name='fromCurrency'
-          label='From'
-          value={formik.values.fromCurrency || ''}
-          onChange={formik.handleChange}
-          error={formik.touched.fromCurrency && Boolean(formik.errors.fromCurrency)}
-        >
-          {availableCurrencies.map((item, index) => {
-            return (
-              <MenuItem
-                value={item}
-                key={index}
-              >
-                {item}
-              </MenuItem>
-            );
-          })}
-        </Select>
-        <InputLabel id='to-currency-label'>To:</InputLabel>
-        <Select
+          options={availableCurrencies.length > 0 ? availableCurrencies : []}
+          getOptionLabel={(option) => option || ''}
+          value={formik.values.fromCurrency}
+          onChange={(_, value) => formik.setFieldValue('fromCurrency', value)}
+          onBlur={formik.handleBlur}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              label='From'
+              name='fromCurrency'
+              id='fromCurrency'
+              value={formik.values.fromCurrency}
+              error={formik.touched.fromCurrency && Boolean(formik.errors.fromCurrency)}
+              onBlur={formik.handleBlur}
+              helperText={formik.touched.fromCurrency && formik.errors.fromCurrency}
+            />
+          )}
+        />
+
+        <Autocomplete
           id='to-currency-select'
-          name='toCurrency'
-          label='To'
-          value={formik.values.toCurrency}
-          onChange={formik.handleChange}
-          error={formik.touched.toCurrency && Boolean(formik.errors.toCurrency)}
-        >
-          {availableCurrencies.map((item, index) => {
-            return (
-              <MenuItem
-                value={item}
-                key={index}
-              >
-                {item}
-              </MenuItem>
-            );
-          })}
-        </Select>
+          options={availableCurrencies.length > 0 ? availableCurrencies : []}
+          getOptionLabel={(option) => option || ''}
+          onChange={(_, value) => formik.setFieldValue('toCurrency', value)}
+          onBlur={formik.handleBlur}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              label='To'
+              name='toCurrency'
+              id='toCurrency'
+              value={formik.values.toCurrency}
+              error={formik.touched.toCurrency && Boolean(formik.errors.toCurrency)}
+              onBlur={formik.handleBlur}
+              helperText={formik.touched.toCurrency && formik.errors.toCurrency}
+            />
+          )}
+        />
 
         <Button
           variant='contained'
