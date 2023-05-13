@@ -1,4 +1,4 @@
-import { AppBar, Grid, Toolbar, Typography } from '@mui/material';
+import { AppBar, Button, Grid, Toolbar, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 export function Header() {
@@ -13,7 +13,12 @@ export function Header() {
             to={'/'}
             style={{ color: 'inherit', textDecoration: 'none' }}
           >
-            <Typography>Main</Typography>
+            <Button
+              variant='text'
+              color='inherit'
+            >
+              Main
+            </Button>
           </Link>
         </Grid>
         <Grid sx={{ margin: '0 25px' }}>
@@ -21,7 +26,12 @@ export function Header() {
             to={'/exchange'}
             style={{ color: 'inherit', textDecoration: 'none' }}
           >
-            <Typography>Exchange rates</Typography>
+            <Button
+              variant='text'
+              color='inherit'
+            >
+              Exchange rates
+            </Button>
           </Link>
         </Grid>
         <Grid sx={{ margin: '0 25px' }}>
@@ -29,7 +39,12 @@ export function Header() {
             to={'/gold'}
             style={{ color: 'inherit', textDecoration: 'none' }}
           >
-            <Typography>Gold</Typography>
+            <Button
+              variant='text'
+              color='inherit'
+            >
+              Gold
+            </Button>
           </Link>
         </Grid>
         <Grid sx={{ margin: '0 25px' }}>
@@ -37,7 +52,12 @@ export function Header() {
             to={'/historical-exchange'}
             style={{ color: 'inherit', textDecoration: 'none' }}
           >
-            <Typography>Previous exchange rates</Typography>
+            <Button
+              variant='text'
+              color='inherit'
+            >
+              Previous exchange rates
+            </Button>
           </Link>
         </Grid>
         <Grid sx={{ margin: '0 25px' }}>
@@ -45,7 +65,12 @@ export function Header() {
             to={'/converter'}
             style={{ color: 'inherit', textDecoration: 'none' }}
           >
-            <Typography>Converter</Typography>
+            <Button
+              variant='text'
+              color='inherit'
+            >
+              Converter
+            </Button>
           </Link>
         </Grid>
       </Toolbar>
