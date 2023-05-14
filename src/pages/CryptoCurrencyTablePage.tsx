@@ -25,6 +25,7 @@ export function CryptoCurrencyTablePage() {
         item
         container
         justifyContent={'center'}
+        marginTop={4}
         xs={12}
         sm={12}
         md={12}

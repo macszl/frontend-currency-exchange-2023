@@ -81,7 +81,7 @@ export function ExchangeRateTable() {
               },
             },
           }}
-          pageSizeOptions={[5, 15, 25]}
+          pageSizeOptions={[25]}
           checkboxSelection
           disableRowSelectionOnClick
         />

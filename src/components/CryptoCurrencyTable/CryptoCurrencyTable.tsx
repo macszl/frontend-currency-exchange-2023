@@ -1,5 +1,6 @@
 import { Grid, CircularProgress } from '@mui/material';
-import { GridColDef, DataGrid } from '@mui/x-data-grid';
+import { GridColDef, DataGrid, GridCellParams } from '@mui/x-data-grid';
+import clsx from 'clsx';
 import axios from 'axios';
 import * as React from 'react';
 import { useState, useEffect } from 'react';
@@ -15,7 +16,24 @@ export function CryptoCurrencyTable() {
     { field: 'symbol', headerName: 'Symbol', minWidth: 100, editable: false, sortable: false, flex: 1 },
     { field: 'name', headerName: 'Name', minWidth: 100, editable: false, sortable: false, flex: 1 },
     { field: 'price', headerName: 'Price(USD)', editable: false, sortable: false, flex: 1 },
-    { field: 'percent_change_7d', headerName: 'Change(7d)', editable: false, sortable: false, flex: 1 },
+    {
+      field: 'percent_change_7d',
+      headerName: 'Change in %(7d)',
+      type: 'number',
+      editable: false,
+      sortable: false,
+      flex: 1,
+      cellClassName: (params: GridCellParams<any, number>) => {
+        if (params.value == null) {
+          return '';
+        }
+
+        return clsx('super-app', {
+          negative: params.value < 0,
+          positive: params.value > 0,
+        });
+      },
+    },
   ];
 
   useEffect(() => {
@@ -34,7 +52,7 @@ export function CryptoCurrencyTable() {
             symbol: ticker.symbol,
             name: ticker.name,
             price: ticker.price_usd,
-            percent_change_7d: ticker.percent_change_7d,
+            percent_change_7d: Number(ticker.percent_change_7d),
           } as CryptoCurrencyTableValues;
         });
         setTableValues(tableValues);
@@ -60,7 +78,17 @@ export function CryptoCurrencyTable() {
       item
       width={'70%'}
       justifyContent={'center'}
-      sx={{ backgroundColor: '#f8f8f5' }}
+      sx={{
+        backgroundColor: '#f8f8f5',
+        '& .super-app.negative': {
+          color: '#ac1917',
+          fontWeight: '600',
+        },
+        '& .super-app.positive': {
+          color: '#237f5d',
+          fontWeight: '600',
+        },
+      }}
     >
       {!isLoading ? (
         <DataGrid

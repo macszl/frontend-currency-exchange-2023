@@ -3,7 +3,7 @@ export interface CryptoCurrencyTableValues {
   symbol: string;
   name: string;
   price: string;
-  percent_change_7d: string;
+  percent_change_7d: number;
 }
 
 export interface CryptoTicker {
