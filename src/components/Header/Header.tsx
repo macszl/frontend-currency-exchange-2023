@@ -1,4 +1,4 @@
-import { AppBar, Button, Grid, Toolbar, Typography } from '@mui/material';
+import { AppBar, Button, Grid, Toolbar } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 export function Header() {

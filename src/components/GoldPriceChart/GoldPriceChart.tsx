@@ -57,7 +57,6 @@ export function GoldPriceChart() {
 
         const totalDays = buttonStuff[mode];
         const dataPoints = timeframe[totalDays];
-        const endDate = new Date().toISOString().slice(0, 10);
 
         // Calculate the start date based on the number of data points and the end date
 

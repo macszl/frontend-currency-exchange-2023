@@ -46,7 +46,7 @@ export function CryptoCurrencyTable() {
         });
         //create a new array with the data from the response
         //and the date from the response
-        const tableValues: CryptoCurrencyTableValues[] = response.data.data.map((ticker: CryptoTicker, index: any) => {
+        const tableValues: CryptoCurrencyTableValues[] = response.data.data.map((ticker: CryptoTicker) => {
           return {
             id: ticker.rank,
             symbol: ticker.symbol,
