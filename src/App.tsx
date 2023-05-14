@@ -1,15 +1,34 @@
-import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { MainPage } from './pages/MainPage';
+import { CurrencyHistoryPage } from './pages/CurrencyHistoryPage';
+import { CurrencyConverterPage } from './pages/CurrencyConverter';
+import { ExchangeRateTablePage } from './pages/ExchangeRateTablePage';
+import { GoldPricePage } from './pages/GoldPricePage';
+import '@fontsource/inter';
+import '@fontsource/roboto';
+import { CryptoCurrencyTablePage } from './pages/CryptoCurrencyTablePage';
 
 export function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <Routes>
       <Route
         path='/'
-        element={<MainPage />}
+        element={<CurrencyConverterPage />}
+      />
+      <Route
+        path='/gold'
+        element={<GoldPricePage />}
+      />
+      <Route
+        path='currency-history'
+        element={<CurrencyHistoryPage />}
+      />
+      <Route
+        path='exchange'
+        element={<ExchangeRateTablePage />}
+      />
+      <Route
+        path='crypto'
+        element={<CryptoCurrencyTablePage />}
       />
     </Routes>
   );
