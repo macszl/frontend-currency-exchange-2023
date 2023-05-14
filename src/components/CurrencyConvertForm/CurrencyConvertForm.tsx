@@ -1,17 +1,15 @@
 import { Autocomplete, Button, Grid, TextField, Typography } from '@mui/material';
 import axios from 'axios';
 import { useFormik } from 'formik';
-import { useState } from 'react';
-import { useCurrencyList } from '../../common/useCurrencyList';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { CurrencyConverterFormErrors } from './CurrencyConverterForm.types';
-
-//todo
-//remove this after backend sync gets done
 
 export function CurrencyConvertForm() {
   const [conversionResult, setConversionResult] = useState('');
   const [exchangeRateArr, setExchangeRateArr] = useState<string[]>([]);
-  const availableCurrencies = useCurrencyList();
+  const [availableCurrencies, setAvailableCurrencies] = useState<string[]>([]);
+  const router = useNavigate();
 
   const getExchangeRate = async (values: { amount: string; fromCurrency: string; toCurrency: string }) => {
     const response = await axios.get(`${import.meta.env.VITE_API_URL}/exchangerates/rates/c/${values.fromCurrency}`);
@@ -51,6 +49,21 @@ export function CurrencyConvertForm() {
       getExchangeRate(values);
     },
   });
+
+  useEffect(() => {
+    async function fetchData() {
+      const api_url = `${import.meta.env.VITE_API_URL}/exchangerates/tables/c/`;
+      const response = await axios.get(api_url);
+      const rates: { currency: string; code: string; mid: number }[] = response.data[0].rates;
+      const availableCurrencies = rates.map((rate) => {
+        return rate.code;
+      });
+      setAvailableCurrencies(availableCurrencies);
+      formik.setFieldValue('fromCurrency', availableCurrencies[0]);
+      formik.setFieldValue('toCurrency', availableCurrencies[1]);
+    }
+    fetchData();
+  }, []);
 
   return (
     <Grid
@@ -162,8 +175,22 @@ export function CurrencyConvertForm() {
               container
               justifyContent={'space-between'}
             >
-              <Button variant='outlined'>{formik.values.fromCurrency} history</Button>
-              <Button variant='outlined'>{formik.values.toCurrency} history</Button>
+              <Button
+                onClick={() => {
+                  router(`/currency-history?currency=${formik.values.fromCurrency}`);
+                }}
+                variant='outlined'
+              >
+                {formik.values.fromCurrency} history
+              </Button>
+              <Button
+                onClick={() => {
+                  router(`/currency-history?currency=${formik.values.toCurrency}`);
+                }}
+                variant='outlined'
+              >
+                {formik.values.toCurrency} history
+              </Button>
             </Grid>
           </Grid>
         </Grid>

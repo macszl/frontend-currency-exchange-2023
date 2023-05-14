@@ -2,7 +2,7 @@ import { Grid } from '@mui/material';
 import { CurrencyHistoryChart } from '../components/CurrencyHistoryChart/CurrencyHistoryChart';
 import { Header } from '../components/Header/Header';
 
-export function HistoricalExchangeRateTablePage() {
+export function CurrencyHistoryPage() {
   return (
     <Grid
       container

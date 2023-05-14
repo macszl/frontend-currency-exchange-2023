@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { HistoricalExchangeRateTablePage } from './pages/HistoricalExchangeRateTablePage';
+import { CurrencyHistoryPage } from './pages/CurrencyHistoryPage';
 import { CurrencyConverterPage } from './pages/CurrencyConverter';
 import { ExchangeRateTablePage } from './pages/ExchangeRateTablePage';
 import { GoldPricePage } from './pages/GoldPricePage';
@@ -12,10 +12,6 @@ export function App() {
     <Routes>
       <Route
         path='/'
-        element={<MainPage />}
-      />
-      <Route
-        path='/converter'
         element={<CurrencyConverterPage />}
       />
       <Route
@@ -23,8 +19,8 @@ export function App() {
         element={<GoldPricePage />}
       />
       <Route
-        path='historical-exchange'
-        element={<HistoricalExchangeRateTablePage />}
+        path='currency-history'
+        element={<CurrencyHistoryPage />}
       />
       <Route
         path='exchange'

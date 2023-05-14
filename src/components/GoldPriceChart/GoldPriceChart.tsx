@@ -28,16 +28,14 @@ const modeLookup = {
 const timeframe: TimeFrameType = {
   14: 14,
   31: 31,
-  93: 62,
-  185: 62,
-  365: 93,
-  730: 93,
-  1825: 93,
+  93: 31,
+  185: 31,
+  365: 31,
+  730: 31,
+  1825: 31,
 };
 
 export function GoldPriceChart() {
-  const [goldPrices, setGoldPrices] = useState<number[]>([]);
-  const [labels, setLabels] = useState<string[]>([]);
   const [mode, setMode] = useState<keyof ButtonStuffType>('1m');
   const [data, setData] = useState<{
     labels: string[];
@@ -93,8 +91,6 @@ export function GoldPriceChart() {
 
         const filteredDateArray = dateLabels.filter((_, index) => prices[index] !== -1);
         const filteredPricesArray = prices.filter((price) => price !== -1);
-        setGoldPrices(filteredPricesArray);
-        setLabels(filteredDateArray);
 
         const updatedData = {
           labels: filteredDateArray,

@@ -10,20 +10,6 @@ export function Header() {
       <Toolbar>
         <Grid sx={{ margin: '0 25px' }}>
           <Link
-            to={'/'}
-            style={{ color: 'inherit', textDecoration: 'none' }}
-          >
-            <Button
-              variant='text'
-              color='inherit'
-              sx={{ fontFamily: 'Inter', fontSize: '1rem', textTransform: 'none' }}
-            >
-              Main
-            </Button>
-          </Link>
-        </Grid>
-        <Grid sx={{ margin: '0 25px' }}>
-          <Link
             to={'/exchange'}
             style={{ color: 'inherit', textDecoration: 'none' }}
           >
@@ -52,7 +38,7 @@ export function Header() {
         </Grid>
         <Grid sx={{ margin: '0 25px' }}>
           <Link
-            to={'/historical-exchange'}
+            to={'/currency-history'}
             style={{ color: 'inherit', textDecoration: 'none' }}
           >
             <Button
@@ -66,7 +52,7 @@ export function Header() {
         </Grid>
         <Grid sx={{ margin: '0 25px' }}>
           <Link
-            to={'/converter'}
+            to={'/'}
             style={{ color: 'inherit', textDecoration: 'none' }}
           >
             <Button
