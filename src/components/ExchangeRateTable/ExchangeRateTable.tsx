@@ -1,13 +1,14 @@
 import * as React from 'react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { CurrencyRate, CurrencyTableValues } from './ExchangeRateTable.types';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
-import { Grid } from '@mui/material';
+import { CircularProgress, Grid } from '@mui/material';
 
 export function ExchangeRateTable() {
   const [tableValues, setTableValues] = React.useState<CurrencyTableValues[]>([]);
   const tableAURL = `${import.meta.env.VITE_API_URL}/exchangerates/tables/a/`;
+  const [isLoading, setIsLoading] = useState(true);
 
   const columns: GridColDef[] = [
     { field: 'id', headerName: 'ID', width: 70, editable: false },
@@ -30,6 +31,7 @@ export function ExchangeRateTable() {
     const controller = new AbortController();
     const fetchData = async () => {
       try {
+        setIsLoading(true);
         const response = await axios.get(tableAURL, {
           signal: controller.signal,
         });
@@ -50,6 +52,8 @@ export function ExchangeRateTable() {
         } else {
           console.log(error);
         }
+      } finally {
+        setIsLoading(false);
       }
     };
     fetchData();
@@ -58,26 +62,31 @@ export function ExchangeRateTable() {
       controller.abort();
     };
   }, []);
+
   return (
     <Grid
       item
       width={'70%'}
       justifyContent={'center'}
     >
-      <DataGrid
-        rows={tableValues}
-        columns={columns}
-        initialState={{
-          pagination: {
-            paginationModel: {
-              pageSize: 25,
+      {!isLoading ? (
+        <DataGrid
+          rows={tableValues}
+          columns={columns}
+          initialState={{
+            pagination: {
+              paginationModel: {
+                pageSize: 25,
+              },
             },
-          },
-        }}
-        pageSizeOptions={[5, 15, 25]}
-        checkboxSelection
-        disableRowSelectionOnClick
-      />
+          }}
+          pageSizeOptions={[5, 15, 25]}
+          checkboxSelection
+          disableRowSelectionOnClick
+        />
+      ) : (
+        <CircularProgress />
+      )}
     </Grid>
   );
 }
