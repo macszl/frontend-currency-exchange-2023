@@ -1,5 +1,6 @@
 import { Grid } from '@mui/material';
 import { CurrencyConvertForm } from '../components/CurrencyConvertForm/CurrencyConvertForm';
+import { Footer } from '../components/Footer/Footer';
 import { Header } from '../components/Header/Header';
 
 export function CurrencyConverterPage() {
@@ -7,6 +8,7 @@ export function CurrencyConverterPage() {
     <Grid
       container
       justifyContent={'center'}
+      alignContent={'space-between'}
       minHeight={'100vh'}
       height={'auto'}
       sx={{ backgroundColor: '#f6f6f2' }}
@@ -24,6 +26,7 @@ export function CurrencyConverterPage() {
       <Grid item>
         <CurrencyConvertForm></CurrencyConvertForm>
       </Grid>
+      <Footer />
     </Grid>
   );
 }

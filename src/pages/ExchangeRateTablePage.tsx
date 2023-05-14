@@ -1,5 +1,6 @@
 import { Grid } from '@mui/material';
 import { ExchangeRateTable } from '../components/ExchangeRateTable/ExchangeRateTable';
+import { Footer } from '../components/Footer/Footer';
 import { Header } from '../components/Header/Header';
 
 export function ExchangeRateTablePage() {
@@ -7,6 +8,7 @@ export function ExchangeRateTablePage() {
     <Grid
       container
       justifyContent={'center'}
+      alignContent={'space-between'}
       minHeight={'100vh'}
       height={'auto'}
       sx={{ backgroundColor: '#f6f6f2' }}
@@ -35,6 +37,7 @@ export function ExchangeRateTablePage() {
       >
         <ExchangeRateTable />
       </Grid>
+      <Footer />
     </Grid>
   );
 }

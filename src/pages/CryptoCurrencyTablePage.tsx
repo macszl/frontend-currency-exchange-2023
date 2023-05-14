@@ -1,5 +1,6 @@
 import { Grid } from '@mui/material';
 import { CryptoCurrencyTable } from '../components/CryptoCurrencyTable/CryptoCurrencyTable';
+import { Footer } from '../components/Footer/Footer';
 import { Header } from '../components/Header/Header';
 
 export function CryptoCurrencyTablePage() {
@@ -7,6 +8,7 @@ export function CryptoCurrencyTablePage() {
     <Grid
       container
       justifyContent={'center'}
+      alignContent={'space-between'}
       minHeight={'100vh'}
       height={'auto'}
       sx={{ backgroundColor: '#f6f6f2' }}
@@ -34,6 +36,7 @@ export function CryptoCurrencyTablePage() {
       >
         <CryptoCurrencyTable />
       </Grid>
+      <Footer />
     </Grid>
   );
 }

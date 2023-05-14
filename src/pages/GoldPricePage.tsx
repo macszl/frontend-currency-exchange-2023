@@ -1,4 +1,5 @@
 import { Grid } from '@mui/material';
+import { Footer } from '../components/Footer/Footer';
 import { GoldPriceChart } from '../components/GoldPriceChart/GoldPriceChart';
 import { Header } from '../components/Header/Header';
 
@@ -7,6 +8,7 @@ export function GoldPricePage() {
     <Grid
       container
       justifyContent={'center'}
+      alignContent={'space-between'}
       minHeight={'100vh'}
       height={'auto'}
       sx={{ backgroundColor: '#f6f6f2' }}
@@ -22,6 +24,7 @@ export function GoldPricePage() {
         <Header />
         <GoldPriceChart />
       </Grid>
+      <Footer />
     </Grid>
   );
 }

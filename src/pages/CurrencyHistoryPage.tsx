@@ -1,5 +1,6 @@
 import { Grid } from '@mui/material';
 import { CurrencyHistoryChart } from '../components/CurrencyHistoryChart/CurrencyHistoryChart';
+import { Footer } from '../components/Footer/Footer';
 import { Header } from '../components/Header/Header';
 
 export function CurrencyHistoryPage() {
@@ -7,6 +8,7 @@ export function CurrencyHistoryPage() {
     <Grid
       container
       justifyContent={'space-between'}
+      alignContent={'space-between'}
       minHeight={'100vh'}
       height={'auto'}
       sx={{ backgroundColor: '#f6f6f2' }}
@@ -32,6 +34,7 @@ export function CurrencyHistoryPage() {
       >
         <CurrencyHistoryChart />
       </Grid>
+      <Footer/>
     </Grid>
   );
 }
