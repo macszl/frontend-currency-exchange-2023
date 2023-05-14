@@ -86,13 +86,16 @@ export function CurrencyHistoryChart() {
 
   return (
     <Grid
-      marginTop={4}
-      justifyContent='center'
-      width={'80%'}
+      item
+      container
+      marginTop={8}
+      alignItems={'center'}
+      flexDirection={'column'}
     >
       <Autocomplete
         id='currency-select'
         options={availableCurrencies.length > 0 ? availableCurrencies : []}
+        sx={{ minWidth: '300px' }}
         value={chosenCurrency}
         onChange={(_, value) => {
           if (!value) {
@@ -109,18 +112,27 @@ export function CurrencyHistoryChart() {
         )}
       />
 
-      {isLoading ? (
-        <CircularProgress />
-      ) : (
-        <Chart
-          type='line'
-          data={data}
-          style={{ width: '80%', backgroundColor: '#f8f8f5' }}
-          options={{
-            scales: { y: { beginAtZero: true } },
-          }}
-        />
-      )}
+      <Grid
+        item
+        container
+        justifyContent={'center'}
+        alignItems={'center'}
+        width={'80%'}
+        marginTop={6}
+      >
+        {isLoading ? (
+          <CircularProgress />
+        ) : (
+          <Chart
+            type='line'
+            data={data}
+            style={{ backgroundColor: '#f8f8f5' }}
+            options={{
+              scales: { y: { beginAtZero: true } },
+            }}
+          />
+        )}
+      </Grid>
     </Grid>
   );
 }

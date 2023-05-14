@@ -6,7 +6,7 @@ export function CurrencyHistoryPage() {
   return (
     <Grid
       container
-      justifyContent={'center'}
+      justifyContent={'space-between'}
       minHeight={'100vh'}
       height={'auto'}
       sx={{ backgroundColor: '#f6f6f2' }}
@@ -20,6 +20,16 @@ export function CurrencyHistoryPage() {
         xl={12}
       >
         <Header />
+      </Grid>
+
+      <Grid
+        item
+        xs={12}
+        sm={12}
+        md={12}
+        lg={12}
+        xl={12}
+      >
         <CurrencyHistoryChart />
       </Grid>
     </Grid>
