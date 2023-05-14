@@ -6,7 +6,9 @@ export function MainPage() {
     <Grid
       container
       justifyContent={'center'}
-      height={'100vh'}
+      minHeight={'100vh'}
+      height={'auto'}
+      sx={{ backgroundColor: '#f6f6f2' }}
     >
       <Grid
         item

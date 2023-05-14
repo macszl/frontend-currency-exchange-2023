@@ -16,6 +16,7 @@ export function Header() {
             <Button
               variant='text'
               color='inherit'
+              sx={{ fontFamily: 'Inter', fontSize: '1rem', textTransform: 'none' }}
             >
               Main
             </Button>
@@ -29,6 +30,7 @@ export function Header() {
             <Button
               variant='text'
               color='inherit'
+              sx={{ fontFamily: 'Inter', fontSize: '1rem', textTransform: 'none' }}
             >
               Exchange rates
             </Button>
@@ -42,6 +44,7 @@ export function Header() {
             <Button
               variant='text'
               color='inherit'
+              sx={{ fontFamily: 'Inter', fontSize: '1rem', textTransform: 'none' }}
             >
               Gold
             </Button>
@@ -55,6 +58,7 @@ export function Header() {
             <Button
               variant='text'
               color='inherit'
+              sx={{ fontFamily: 'Inter', fontSize: '1rem', textTransform: 'none' }}
             >
               Previous exchange rates
             </Button>
@@ -68,6 +72,7 @@ export function Header() {
             <Button
               variant='text'
               color='inherit'
+              sx={{ fontFamily: 'Inter', fontSize: '1rem', textTransform: 'none' }}
             >
               Converter
             </Button>

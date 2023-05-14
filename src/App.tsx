@@ -4,9 +4,10 @@ import { CurrencyConverterPage } from './pages/CurrencyConverter';
 import { ExchangeRateTablePage } from './pages/ExchangeRateTablePage';
 import { GoldPricePage } from './pages/GoldPricePage';
 import { MainPage } from './pages/MainPage';
+import '@fontsource/inter';
+import '@fontsource/roboto';
 
 export function App() {
-
   return (
     <Routes>
       <Route

@@ -15,7 +15,6 @@ export function ExchangeRateTable() {
     {
       field: 'mid',
       headerName: 'Value(PLN)',
-      type: 'number',
       editable: false,
       flex: 1,
     },

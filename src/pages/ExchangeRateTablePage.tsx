@@ -7,7 +7,9 @@ export function ExchangeRateTablePage() {
     <Grid
       container
       justifyContent={'center'}
-      height={'100vh'}
+      minHeight={'100vh'}
+      height={'auto'}
+      sx={{ backgroundColor: '#f6f6f2' }}
     >
       <Grid
         item
@@ -24,7 +26,6 @@ export function ExchangeRateTablePage() {
         item
         container
         justifyContent={'center'}
-        
         xs={12}
         sm={12}
         md={12}

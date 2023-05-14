@@ -6,7 +6,9 @@ export function HistoricalExchangeRateTablePage() {
     <Grid
       container
       justifyContent={'center'}
-      height={'100vh'}
+      minHeight={'100vh'}
+      height={'auto'}
+      sx={{ backgroundColor: '#f6f6f2' }}
     >
       <Grid
         item
@@ -15,7 +17,9 @@ export function HistoricalExchangeRateTablePage() {
         md={12}
         lg={12}
         xl={12}
-      ><Header/></Grid>
+      >
+        <Header />
+      </Grid>
     </Grid>
   );
 }
