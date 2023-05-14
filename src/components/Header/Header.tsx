@@ -60,7 +60,7 @@ export function Header() {
               color='inherit'
               sx={{ fontFamily: 'Inter', fontSize: '1rem', textTransform: 'none' }}
             >
-              Previous exchange rates
+              Currency history
             </Button>
           </Link>
         </Grid>

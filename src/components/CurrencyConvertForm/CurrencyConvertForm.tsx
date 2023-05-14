@@ -11,6 +11,7 @@ const availableCurrencies = ['USD', 'JPY', 'GBP', 'EUR', 'AUD'];
 
 export function CurrencyConvertForm() {
   const [conversionResult, setConversionResult] = useState('');
+  const [exchangeRateArr, setExchangeRateArr] = useState<string[]>([]);
 
   const getExchangeRate = async (values: { amount: string; fromCurrency: string; toCurrency: string }) => {
     const response = await axios.get(`${import.meta.env.VITE_API_URL}/exchangerates/rates/c/${values.fromCurrency}`);
@@ -21,7 +22,12 @@ export function CurrencyConvertForm() {
 
     const rate = fromRate / toRate;
 
+    const exchangeRatesText = [
+      `1 ${values.fromCurrency} = ${1 * rate} ${values.toCurrency}`,
+      `1 ${values.toCurrency} = ${toRate / fromRate} ${values.fromCurrency}`,
+    ];
     setConversionResult(`${values.amount} ${values.fromCurrency} = ${Number(values.amount) * rate} ${values.toCurrency}`);
+    setExchangeRateArr(exchangeRatesText);
   };
 
   const validate = (values: { amount: string }) => {
@@ -47,71 +53,120 @@ export function CurrencyConvertForm() {
   });
 
   return (
-    <Grid>
+    <Grid
+      sx={{
+        padding: '1.5rem',
+        paddingLeft: '2.5rem',
+        paddingRight: '2.5rem',
+        backgroundColor: '#f8f8f5',
+        borderRadius: '4px',
+        boxShadow: '0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%)',
+      }}
+    >
       <form onSubmit={formik.handleSubmit}>
-        <TextField
-          id='amount'
-          name='amount'
-          label='Amount'
-          type='number'
-          value={formik.values.amount}
-          onChange={formik.handleChange}
-          error={formik.touched.amount && Boolean(formik.errors.amount)}
-        />
-        <Autocomplete
-          id='from-currency-select'
-          options={availableCurrencies.length > 0 ? availableCurrencies : []}
-          getOptionLabel={(option) => option || ''}
-          value={formik.values.fromCurrency}
-          onChange={(_, value) => formik.setFieldValue('fromCurrency', value)}
-          onBlur={formik.handleBlur}
-          renderInput={(params) => (
-            <TextField
-              {...params}
-              label='From'
-              name='fromCurrency'
-              id='fromCurrency'
-              value={formik.values.fromCurrency}
-              error={formik.touched.fromCurrency && Boolean(formik.errors.fromCurrency)}
-              onBlur={formik.handleBlur}
-              helperText={formik.touched.fromCurrency && formik.errors.fromCurrency}
-            />
-          )}
-        />
-
-        <Autocomplete
-          id='to-currency-select'
-          options={availableCurrencies.length > 0 ? availableCurrencies : []}
-          getOptionLabel={(option) => option || ''}
-          onChange={(_, value) => formik.setFieldValue('toCurrency', value)}
-          onBlur={formik.handleBlur}
-          renderInput={(params) => (
-            <TextField
-              {...params}
-              label='To'
-              name='toCurrency'
-              id='toCurrency'
-              value={formik.values.toCurrency}
-              error={formik.touched.toCurrency && Boolean(formik.errors.toCurrency)}
-              onBlur={formik.handleBlur}
-              helperText={formik.touched.toCurrency && formik.errors.toCurrency}
-            />
-          )}
-        />
-
-        <Button
-          variant='contained'
-          color='primary'
-          sx={{
-            padding: 1,
-            width: 1,
-          }}
-          type='submit'
-          disabled={formik.errors.amount ? true : false}
+        <Grid
+          item
+          container
+          flexDirection={'row'}
+          justifyContent={'space-between'}
+          gap={3}
         >
-          Convert
-        </Button>
-        {conversionResult && <Typography> {conversionResult}</Typography>}
+          <TextField
+            id='amount'
+            name='amount'
+            label='Amount'
+            type='number'
+            value={formik.values.amount}
+            onChange={formik.handleChange}
+            error={formik.touched.amount && Boolean(formik.errors.amount)}
+          />
+          <Autocomplete
+            id='from-currency-select'
+            options={availableCurrencies.length > 0 ? availableCurrencies : []}
+            sx={{ minWidth: '180px' }}
+            getOptionLabel={(option) => option || ''}
+            value={formik.values.fromCurrency}
+            onChange={(_, value) => formik.setFieldValue('fromCurrency', value)}
+            onBlur={formik.handleBlur}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label='From'
+                name='fromCurrency'
+                id='fromCurrency'
+                value={formik.values.fromCurrency}
+                error={formik.touched.fromCurrency && Boolean(formik.errors.fromCurrency)}
+                onBlur={formik.handleBlur}
+                helperText={formik.touched.fromCurrency && formik.errors.fromCurrency}
+              />
+            )}
+          />
+
+          <Autocomplete
+            id='to-currency-select'
+            options={availableCurrencies.length > 0 ? availableCurrencies : []}
+            sx={{ minWidth: '180px' }}
+            getOptionLabel={(option) => option || ''}
+            value={formik.values.toCurrency}
+            onChange={(_, value) => formik.setFieldValue('toCurrency', value)}
+            onBlur={formik.handleBlur}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label='To'
+                name='toCurrency'
+                id='toCurrency'
+                value={formik.values.toCurrency}
+                error={formik.touched.toCurrency && Boolean(formik.errors.toCurrency)}
+                onBlur={formik.handleBlur}
+                helperText={formik.touched.toCurrency && formik.errors.toCurrency}
+              />
+            )}
+          />
+        </Grid>
+        <Grid
+          marginTop={4}
+          item
+          container
+          justifyContent={'space-between'}
+        >
+          {conversionResult && (
+            <Grid>
+              <Grid>
+                <Typography sx={{ color: 'rgba(0,0,0,0.8)', fontSize: '1.5rem' }}> {conversionResult.split('=')[0]} =</Typography>
+                <Typography sx={{ fontWeight: '500', fontSize: '2.0rem' }}> {conversionResult.split('=')[1]}</Typography>
+                <Typography sx={{ fontSize: '0.9rem', color: 'rgba(0,0,0,0.6)' }}> {exchangeRateArr[0]} </Typography>
+                <Typography sx={{ fontSize: '0.9rem', color: 'rgba(0,0,0,0.6)' }}> {exchangeRateArr[1]} </Typography>
+              </Grid>
+            </Grid>
+          )}
+          <Button
+            variant='contained'
+            color='inherit'
+            sx={{
+              height: '52px',
+              backgroundColor: '#388087',
+              color: '#ffffff',
+            }}
+            type='submit'
+            disabled={formik.errors.amount ? true : false}
+          >
+            Convert
+          </Button>
+          <Grid
+            container
+            marginTop={4}
+            justifyContent={'space-between'}
+          >
+            <Grid
+              container
+              justifyContent={'space-between'}
+            >
+              <Button variant='outlined'>{formik.values.fromCurrency} history</Button>
+              <Button variant='outlined'>{formik.values.toCurrency} history</Button>
+            </Grid>
+          </Grid>
+        </Grid>
       </form>
     </Grid>
   );
