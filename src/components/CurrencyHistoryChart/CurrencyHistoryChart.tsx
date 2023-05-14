@@ -85,7 +85,11 @@ export function CurrencyHistoryChart() {
   }, [chosenCurrency]);
 
   return (
-    <Grid marginTop={4}>
+    <Grid
+      marginTop={4}
+      justifyContent='center'
+      width={'80%'}
+    >
       <Autocomplete
         id='currency-select'
         options={availableCurrencies.length > 0 ? availableCurrencies : []}
@@ -111,6 +115,7 @@ export function CurrencyHistoryChart() {
         <Chart
           type='line'
           data={data}
+          style={{ width: '80%', backgroundColor: '#f8f8f5' }}
           options={{
             scales: { y: { beginAtZero: true } },
           }}

@@ -64,6 +64,20 @@ export function Header() {
             </Button>
           </Link>
         </Grid>
+        <Grid sx={{ margin: '0 25px' }}>
+          <Link
+            to={'/crypto'}
+            style={{ color: 'inherit', textDecoration: 'none' }}
+          >
+            <Button
+              variant='text'
+              color='inherit'
+              sx={{ fontFamily: 'Inter', fontSize: '1rem', textTransform: 'none' }}
+            >
+              Crypto
+            </Button>
+          </Link>
+        </Grid>
       </Toolbar>
     </AppBar>
   );

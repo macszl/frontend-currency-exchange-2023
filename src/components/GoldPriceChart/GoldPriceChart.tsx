@@ -158,6 +158,7 @@ export function GoldPriceChart() {
         container
         justifyContent={'center'}
         alignItems={'center'}
+        width={'80%'}
         marginTop={8}
       >
         {isLoading ? (
@@ -166,6 +167,7 @@ export function GoldPriceChart() {
           <Chart
             type='line'
             data={data}
+            style={{ width: '80%', backgroundColor: '#f8f8f5' }}
             options={{
               scales: { y: { beginAtZero: true } },
             }}

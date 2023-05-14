@@ -41,8 +41,8 @@ export function CurrencyConvertForm() {
   const formik = useFormik({
     initialValues: {
       amount: '0',
-      fromCurrency: availableCurrencies[0],
-      toCurrency: availableCurrencies[1],
+      fromCurrency: 'USD',
+      toCurrency: 'AUD',
     },
     validate: validate,
     onSubmit: (values) => {
@@ -97,7 +97,6 @@ export function CurrencyConvertForm() {
             id='from-currency-select'
             options={availableCurrencies.length > 0 ? availableCurrencies : []}
             sx={{ minWidth: '180px' }}
-            getOptionLabel={(option) => option || ''}
             value={formik.values.fromCurrency}
             onChange={(_, value) => formik.setFieldValue('fromCurrency', value)}
             onBlur={formik.handleBlur}

@@ -3,9 +3,9 @@ import { CurrencyHistoryPage } from './pages/CurrencyHistoryPage';
 import { CurrencyConverterPage } from './pages/CurrencyConverter';
 import { ExchangeRateTablePage } from './pages/ExchangeRateTablePage';
 import { GoldPricePage } from './pages/GoldPricePage';
-import { MainPage } from './pages/MainPage';
 import '@fontsource/inter';
 import '@fontsource/roboto';
+import { CryptoCurrencyTablePage } from './pages/CryptoCurrencyTablePage';
 
 export function App() {
   return (
@@ -25,6 +25,10 @@ export function App() {
       <Route
         path='exchange'
         element={<ExchangeRateTablePage />}
+      />
+      <Route
+        path='crypto'
+        element={<CryptoCurrencyTablePage />}
       />
     </Routes>
   );
