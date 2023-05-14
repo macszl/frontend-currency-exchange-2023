@@ -1,4 +1,5 @@
 import { Grid } from '@mui/material';
+import { CurrencyHistoryChart } from '../components/CurrencyHistoryChart/CurrencyHistoryChart';
 import { Header } from '../components/Header/Header';
 
 export function HistoricalExchangeRateTablePage() {
@@ -19,6 +20,7 @@ export function HistoricalExchangeRateTablePage() {
         xl={12}
       >
         <Header />
+        <CurrencyHistoryChart />
       </Grid>
     </Grid>
   );

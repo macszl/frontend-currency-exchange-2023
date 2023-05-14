@@ -128,7 +128,10 @@ export function GoldPriceChart() {
       justifyContent={'center'}
       alignItems={'center'}
     >
-      <Grid item>
+      <Grid
+        item
+        marginTop={6}
+      >
         <Typography
           color={'#388087'}
           fontSize={'3rem'}
@@ -159,6 +162,7 @@ export function GoldPriceChart() {
         container
         justifyContent={'center'}
         alignItems={'center'}
+        marginTop={8}
       >
         {isLoading ? (
           <CircularProgress />

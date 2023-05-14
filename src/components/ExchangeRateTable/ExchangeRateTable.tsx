@@ -68,6 +68,7 @@ export function ExchangeRateTable() {
       item
       width={'70%'}
       justifyContent={'center'}
+      sx={{ backgroundColor: '#f8f8f5' }}
     >
       {!isLoading ? (
         <DataGrid

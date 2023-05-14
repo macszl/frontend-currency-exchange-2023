@@ -2,16 +2,16 @@ import { Autocomplete, Button, Grid, TextField, Typography } from '@mui/material
 import axios from 'axios';
 import { useFormik } from 'formik';
 import { useState } from 'react';
+import { useCurrencyList } from '../../common/useCurrencyList';
 import { CurrencyConverterFormErrors } from './CurrencyConverterForm.types';
 
 //todo
 //remove this after backend sync gets done
 
-const availableCurrencies = ['USD', 'JPY', 'GBP', 'EUR', 'AUD'];
-
 export function CurrencyConvertForm() {
   const [conversionResult, setConversionResult] = useState('');
   const [exchangeRateArr, setExchangeRateArr] = useState<string[]>([]);
+  const availableCurrencies = useCurrencyList();
 
   const getExchangeRate = async (values: { amount: string; fromCurrency: string; toCurrency: string }) => {
     const response = await axios.get(`${import.meta.env.VITE_API_URL}/exchangerates/rates/c/${values.fromCurrency}`);
